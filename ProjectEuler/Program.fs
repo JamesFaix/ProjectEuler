@@ -8,6 +8,7 @@ let main argv =
     //printfn "The answer to Problem 6 is %A" Problem6.getAnswer
     //printfn "The answer to Problem 7 is %A" Problem7.getAnswer
     //printfn "The answer to Problem 8 is %A" Problem8.getAnswer
-    printfn "The answer to Problem 9 is %A" Problem9.getAnswer
+    //printfn "The answer to Problem 9 is %A" Problem9.getAnswer
+    printfn "The answer to Problem 10 is %A" Problem10.getAnswer
     System.Console.ReadLine() |> ignore
     0
