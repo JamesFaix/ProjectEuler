@@ -4,6 +4,9 @@
     open System.IO
     open System.Reflection
 
+    module Seq =
+        let inline product seq = seq |> Seq.reduce (*)
+
     module Primes =
         
         let private cachePath = 
