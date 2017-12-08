@@ -13,7 +13,7 @@ Find the product abc.
 
 module Problem9
 
-let getAnswer =
+let getAnswer() =
     let rec findSummands sum count : int list seq =
         match count with
         | c when c < 2 -> failwith "You need to sum more than 1 number"

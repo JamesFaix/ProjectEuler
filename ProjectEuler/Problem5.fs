@@ -8,7 +8,7 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 module Problem5
 
-let getAnswer =         
+let getAnswer() =         
     let divisors = [2L..20L]
     let mutable primes = [2L]    
     

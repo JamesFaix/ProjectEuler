@@ -10,7 +10,7 @@ module Problem7
 
 open System
 
-let getAnswer =
+let getAnswer() =
     let mutable primes = [2L]
     
     let isPrime (n : Int64) = 

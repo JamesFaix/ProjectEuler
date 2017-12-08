@@ -10,7 +10,7 @@ module Problem3
 
 open System
 
-let getAnswer =
+let getAnswer() =
     let product = 600851475143L
     
     let factorLimit = Convert.ToInt64(Math.Floor(Math.Sqrt(Convert.ToDouble(product))))

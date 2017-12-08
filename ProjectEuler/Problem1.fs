@@ -9,14 +9,14 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 module Problem1
 
-let isMultipleOf divisor n = 
+let private isMultipleOf divisor n = 
    n % divisor = 0
 
-let isSummand n =
+let private isSummand n =
     n |> isMultipleOf 3 ||
     n |> isMultipleOf 5
 
-let getAnswer =
+let getAnswer() =
     [1..999] 
     |> List.filter isSummand 
     |> List.sum

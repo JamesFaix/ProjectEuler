@@ -8,7 +8,7 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 module Problem4
 
-let getAnswer =
+let getAnswer() =
     let isPalindrome str =
         let len = String.length str
         [0..len/2]

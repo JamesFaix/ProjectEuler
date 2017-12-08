@@ -10,7 +10,7 @@ module Problem10
 
 open System
 
-let getAnswer =
+let getAnswer() =
     
     let limit = 1000
 

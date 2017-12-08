@@ -12,11 +12,11 @@ do not exceed four million, find the sum of the even-valued terms.
 
 module Problem2
 
-let fib =
+let private fib =
     (0, 1) 
     |> Seq.unfold (fun (cur, next) -> Some(cur, (next, cur + next)))
 
-let getAnswer =
+let getAnswer() =
     fib
     |> Seq.takeWhile (fun n -> n <= 4000000)
     |> Seq.filter(fun n -> n % 2 = 0)

@@ -18,7 +18,7 @@ one hundred natural numbers and the square of the sum.
 
 module Problem6
 
-let getAnswer =
+let getAnswer() =
     let square n = n * n
 
     let sumOfSquares n =
