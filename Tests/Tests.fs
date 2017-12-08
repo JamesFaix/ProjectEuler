@@ -55,3 +55,7 @@ type CheckAnswers() =
     [<Test>]
     member this.Problem11() = 
         Problem11.getAnswer().ShouldBe(70600674)
+                
+    [<Test>]
+    member this.Problem12() = 
+        Problem12.getAnswer().ShouldBe(76576500L)

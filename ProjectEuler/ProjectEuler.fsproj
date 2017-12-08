@@ -67,6 +67,7 @@
     <Compile Include="Problem9.fs" />
     <Compile Include="Problem10.fs" />
     <Compile Include="Problem11.fs" />
+    <Compile Include="Problem12.fs" />
     <Content Include="packages.config" />
     <Content Include="PrimeCache.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
