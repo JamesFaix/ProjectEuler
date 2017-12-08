@@ -8,22 +8,20 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 module Problem5
 
+open System
+
 let getAnswer() =         
     let divisors = [2L..20L]
-    let mutable primes = [2L]    
     
-    let isPrime n = 
-        primes 
-        |> List.exists(fun p -> n % p = 0L) 
-        |> not
+    let product (seq : int64 seq) = seq |> Seq.reduce (fun x y -> x*y)
+    
+    let lowestPossible = 
+        Utilities.Primes.getPrimes
+        |> Seq.takeWhile(fun p -> p <= 20)
+        |> Seq.map(Convert.ToInt64)
+        |> product
 
-    for n in [3L..20L] do
-        if isPrime n
-        then primes <- n::primes
-        else ()
-        
-    let lowestPossible = primes |> Seq.reduce (fun x y -> x*y)
-    let highestPossible = divisors |> Seq.reduce (fun x y -> x*y)
+    let highestPossible = divisors |> product
 
     seq{lowestPossible..highestPossible}
     |> Seq.pick (fun n -> 

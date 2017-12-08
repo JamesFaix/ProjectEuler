@@ -13,28 +13,23 @@ open System
 let getAnswer() =
     let product = 600851475143L
     
-    let factorLimit = Convert.ToInt64(Math.Floor(Math.Sqrt(Convert.ToDouble(product))))
+    let factorLimit = Convert.ToInt32(Math.Floor(Math.Sqrt(Convert.ToDouble(product))))
     
-    let mutable primes = [2L]
+    let primes = 
+        Utilities.Primes.getPrimes
+        |> Seq.takeWhile (fun p -> p <= factorLimit)
+        |> Seq.toList
+        |> List.rev
+        
+    Utilities.Primes.saveCache()
     
-    let isPrime (n : Int64) = 
-        primes 
-        |> List.exists(fun p -> n % p = 0L) 
-        |> not
-
-    let isFactor p =
-        if product % p = 0L 
+    let isFactor (p : int) =
+        if product % Convert.ToInt64(p) = 0L
         then Some p 
         else None
 
-    for n in [3L..factorLimit] do
-        if isPrime n 
-        then do primes <- n::primes
-        else ()
-
-    primes 
-    |> Seq.pick isFactor
-
+    primes |> Seq.pick isFactor
+    
 (*
     You are the 410449th person to have solved this problem.
 *)
