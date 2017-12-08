@@ -1,4 +1,10 @@
-﻿namespace Tests
+﻿(*
+    SPOILER ALERT:
+
+    These tests contain the answers to the Euler Project problems.
+*)
+
+namespace Tests
 
 open NUnit.Framework
 
