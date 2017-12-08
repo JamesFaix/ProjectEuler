@@ -7,46 +7,47 @@
 namespace Tests
 
 open NUnit.Framework
+open Shouldly
 
 [<TestFixture>]
 type CheckAnswers() =
 
     [<Test>]
-    member this.Problem1() =
-        Assert.AreEqual(Problem1.getAnswer(), 233168)
+    member this.Problem1() = 
+        Problem1.getAnswer().ShouldBe(233168)
             
     [<Test>]
-    member this.Problem2() =
-        Assert.AreEqual(Problem2.getAnswer(), 4613732)
+    member this.Problem2() = 
+        Problem2.getAnswer().ShouldBe(4613732)
                 
     [<Test>]
-    member this.Problem3() =
-        Assert.AreEqual(Problem3.getAnswer(), 6857L)
+    member this.Problem3() = 
+        Problem3.getAnswer().ShouldBe(6857)
                 
     [<Test>]
-    member this.Problem4() =
-        Assert.AreEqual(Problem4.getAnswer(), 906609)
+    member this.Problem4() = 
+        Problem4.getAnswer().ShouldBe(906609)
 
     [<Test>]
-    member this.Problem5() =
-        Assert.AreEqual(Problem5.getAnswer(), 232792560L)
+    member this.Problem5() = 
+        Problem5.getAnswer().ShouldBe(232792560L)
         
     [<Test>]
-    member this.Problem6() =
-        Assert.AreEqual(Problem6.getAnswer(), 25164150)
+    member this.Problem6() = 
+        Problem6.getAnswer().ShouldBe(25164150)
         
     [<Test>]
-    member this.Problem7() =
-        Assert.AreEqual(Problem7.getAnswer(), 104743L)
+    member this.Problem7() = 
+        Problem7.getAnswer().ShouldBe(104743L)
         
     [<Test>]
-    member this.Problem8() =
-        Assert.AreEqual(Problem8.getAnswer(), 23514624000L)
+    member this.Problem8() = 
+        Problem8.getAnswer().ShouldBe(23514624000L)
         
     [<Test>]
-    member this.Problem9() =
-        Assert.AreEqual(Problem9.getAnswer(), 31875000)
+    member this.Problem9() = 
+        Problem9.getAnswer().ShouldBe(31875000)
         
     [<Test>]
-    member this.Problem10() =
-        Assert.AreEqual(Problem10.getAnswer(), 142913828922L)
+    member this.Problem10() = 
+        Problem10.getAnswer().ShouldBe(142913828922L)
