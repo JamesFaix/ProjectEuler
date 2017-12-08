@@ -12,7 +12,7 @@ open System
 
 let getAnswer() =
     
-    let limit = 1000
+    let limit = 2000000
 
     let primes = Utilities.Primes.getPrimes
                  |> Seq.takeWhile(fun p -> p < limit)
