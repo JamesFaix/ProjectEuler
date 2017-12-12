@@ -72,6 +72,7 @@
     <Content Include="PrimeCache.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Problem13.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
