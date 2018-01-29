@@ -18,7 +18,7 @@ pub fn get_answer() -> u32 {
     //Convert to string
     let text = number.to_string();
     
-    const RADIX = 10;
+    const RADIX : u32 = 10;
 
     //Sum each char parsed as an i32
     Iterator::fold(text.chars(), 0u32, 
