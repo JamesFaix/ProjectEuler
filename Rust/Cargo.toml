@@ -5,3 +5,4 @@ authors = ["James Faix <jamesthefaix@gmail.com>"]
 
 [dependencies]
 num = "*"
+maplit = "1.0.1"
