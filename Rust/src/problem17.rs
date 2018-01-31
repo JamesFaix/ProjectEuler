@@ -46,8 +46,17 @@ fn primitive_strategy<'a>(number:u32) -> Option<&'a str>{
 }
 
 pub fn get_answer() -> u32 {
-    
-    0u32
+    Iterator::fold(1..1000, 0u32, 
+        |acc, n| -> u32 { 
+            let letter_count = match to_words(n)
+                {
+                    Some(x) => x.chars()
+                        .filter(|letter| -> bool { *letter != ' ' })
+                        .count() as u32,
+                    None => 0
+                };
+            acc + letter_count
+        })
 }
 
 
@@ -57,8 +66,8 @@ pub fn to_words(n: u32) -> Option<String> {
         Some(words) => Some(words.to_string()),
         None => match n {
             x if x > 20 && x < 100 => two_digit_strategy(n),
-            //3-digit strategy
-            //4-digit strategy
+            x if x >= 100 && x < 1000 => three_digit_strategy(n),
+            x if x == 1000 => four_digit_strategy(n),
             
             //Out of range
             _ => None 
@@ -66,7 +75,7 @@ pub fn to_words(n: u32) -> Option<String> {
     }
 }
     
-pub fn two_digit_strategy<'a>(n: u32) -> Option<String> {
+pub fn two_digit_strategy(n: u32) -> Option<String> {
     let ones = n % 10;
     let tens = n - ones;
     match to_words(tens){
@@ -79,6 +88,36 @@ pub fn two_digit_strategy<'a>(n: u32) -> Option<String> {
             None => None
         },
         None => None
+    }
+}
+
+pub fn three_digit_strategy(n: u32) -> Option<String> {
+    let mod100 = n % 100;
+    let hundred = (n - mod100)/100;
+
+    if hundred > 9 {
+        None
+    }
+    else {
+        match to_words(hundred) {
+        None => None,
+        Some(x) => match mod100 {
+            0 => Some(format!("{} hundred", x)),
+            _ => match to_words(mod100) {
+                None => None, // should always be caught above
+                Some(y) => Some(format!("{} hundred and {}", x, y))
+                }
+            }
+        }
+    }
+}
+
+pub fn four_digit_strategy(n: u32) -> Option<String> {
+    if n == 1000 {
+        Some("one thousand".to_string()) 
+    }    
+    else {
+        None
     }
 }
 
