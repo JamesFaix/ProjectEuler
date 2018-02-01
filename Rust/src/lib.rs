@@ -17,7 +17,7 @@ mod tests {
     #[test]
     fn problem17_final_answer() {
         let result = super::problem17::get_answer();
-        assert_eq!(result, 0);
+        assert_eq!(result, 21124);
     }
 
     #[test]
