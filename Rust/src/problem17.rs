@@ -12,6 +12,39 @@
    with British usage.
  */
 
+pub fn get_answer() -> u32 {
+    Iterator::fold(1..1001, 0u32, 
+        |acc, n| -> u32 { 
+            let letter_count = match to_words(n) {
+                Some(x) => {
+                //    println!("{}", x);
+                    x.chars()
+                        .filter(|letter| -> bool { *letter != ' ' })
+                        .count() as u32
+                },
+                None => 0
+            };
+            acc + letter_count
+        }
+    )
+}
+
+
+pub fn to_words(n: u32) -> Option<String> {
+    match primitive_strategy(n)
+    {
+        Some(words) => Some(words.to_string()),
+        None => match n {
+            x if x > 20 && x < 100 => two_digit_strategy(n),
+            x if x >= 100 && x < 1000 => three_digit_strategy(n),
+            x if x == 1000 => four_digit_strategy(n),
+            
+            //Out of range
+            _ => None 
+        }
+    }
+}
+
 fn primitive_strategy<'a>(number:u32) -> Option<&'a str>{
     match number {
         1 => Some("one"),
@@ -42,36 +75,6 @@ fn primitive_strategy<'a>(number:u32) -> Option<&'a str>{
         80 => Some("eighty"),
         90 => Some("ninety"),
         _ => None
-    }
-}
-
-pub fn get_answer() -> u32 {
-    Iterator::fold(1..1000, 0u32, 
-        |acc, n| -> u32 { 
-            let letter_count = match to_words(n)
-                {
-                    Some(x) => x.chars()
-                        .filter(|letter| -> bool { *letter != ' ' })
-                        .count() as u32,
-                    None => 0
-                };
-            acc + letter_count
-        })
-}
-
-
-pub fn to_words(n: u32) -> Option<String> {
-    match primitive_strategy(n)
-    {
-        Some(words) => Some(words.to_string()),
-        None => match n {
-            x if x > 20 && x < 100 => two_digit_strategy(n),
-            x if x >= 100 && x < 1000 => three_digit_strategy(n),
-            x if x == 1000 => four_digit_strategy(n),
-            
-            //Out of range
-            _ => None 
-        }
     }
 }
     
@@ -122,5 +125,6 @@ pub fn four_digit_strategy(n: u32) -> Option<String> {
 }
 
 /*
- * 
+ * You are the 121346th person to have solved this problem.
+ * (With gratuitous assistance from Jeremy Spangler.)
  */
