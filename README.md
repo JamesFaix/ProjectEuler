@@ -21,3 +21,5 @@ This repository contains my solutions for the [Project Euler](https://projecteul
 | 15 | _(Skipped)_ |
 | 16 | Rust |
 | 17 | Rust |
+| 18 | _(Skipped)_ |
+| 19 | _(Started in Rust, not merged)_ |
