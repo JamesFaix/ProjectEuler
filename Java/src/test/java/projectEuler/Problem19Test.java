@@ -6,9 +6,10 @@ package projectEuler;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class LibraryTest {
+public class Problem19Test {
     @Test public void testSomeLibraryMethod() {
-        Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+        var expected = 0;
+        var actual = Problem19.getAnswer();
+        assertEquals("Problem 19 returns the correct answer", expected, actual);
     }
 }
