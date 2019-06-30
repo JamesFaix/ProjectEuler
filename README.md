@@ -2,6 +2,10 @@
 
 This repository contains my solutions for the [Project Euler](https://projecteuler.net/) problems.
 
+**!!SPOILER ALERT!!**
+
+Don't read my solutions if you actually want to solve these problems yourself.
+
 | #    | Language  |
 | ---: | :-------: |
 | 1 | F# |
