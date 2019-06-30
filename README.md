@@ -26,4 +26,4 @@ Don't read my solutions if you actually want to solve these problems yourself.
 | 16 | Rust |
 | 17 | Rust |
 | 18 | _(Skipped)_ |
-| 19 | _(Started in Rust, not merged)_ |
+| 19 | Java |
