@@ -27,3 +27,5 @@ Don't read my solutions if you actually want to solve these problems yourself.
 | 17 | Rust |
 | 18 | _(Skipped)_ |
 | 19 | Java |
+| 20 | _(Skipped)_ |
+| 21 | Scala |
