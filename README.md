@@ -30,3 +30,4 @@ Don't read my solutions if you actually want to solve these problems yourself.
 | 20 | Java |
 | 21 | Scala |
 | 22 | Scala |
+| 23 | Scala |
