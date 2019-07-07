@@ -52,8 +52,6 @@ object Problem21 {
         }
       }
 
-      println(set)
-
       set
     }
 }
