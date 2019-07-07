@@ -32,7 +32,7 @@ class Problem22Suite extends FlatSpec {
       Problem22.getCharacterValue('Z')
     }
 
-  it should "return 1 for 'z'" in
+  it should "return 26 for 'z'" in
     assertResult(26) {
       Problem22.getCharacterValue('z')
     }

@@ -20,12 +20,7 @@ object Problem21 {
     getAmicableNumbersLessThan(10000).sum
 
   def getSumOfProperDivisors(n : Int) : Int =
-    {
-      val maxProperDivisor = math.floor(n/2).toInt
-      (1 to maxProperDivisor)
-          .filter(n % _ == 0)
-          .sum
-    }
+      Common.getProperDivisors(n).sum
 
   def getAmicableCompliment(n : Int) : Option[Int] =
     {

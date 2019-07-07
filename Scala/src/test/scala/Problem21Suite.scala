@@ -14,7 +14,7 @@ class Problem21Suite extends FlatSpec {
       Problem21.getSumOfProperDivisors(24)
     }
 
-  "getSumOfProperDivisors" should "return the correct value for 99" in
+  it should "return the correct value for 99" in
     //Proper divisors are 1, 3, 9, 11, 33
     //Sum is 57
     assertResult(57) {
@@ -27,13 +27,13 @@ class Problem21Suite extends FlatSpec {
       Problem21.getAmicableCompliment(6)
     }
 
-  "getAmicableCompliment" should "return the correct value for 220" in
+  it should "return the correct value for 220" in
     //This example is given in the problem instructions
     assertResult(Some(284)) {
       Problem21.getAmicableCompliment(220)
     }
 
-  "getAmicableCompliment" should "return the correct value for 284" in
+  it should "return the correct value for 284" in
     //This example is given in the problem instructions
     assertResult(Some(220)) {
       Problem21.getAmicableCompliment(284)
