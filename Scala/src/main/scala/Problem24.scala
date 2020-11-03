@@ -1,5 +1,7 @@
 package projecteuler
 
+import scala.collection.mutable
+
 /*
   A permutation is an ordered arrangement of objects.
   For example, 3124 is one possible permutation of the digits 1, 2, 3 and 4.
@@ -81,8 +83,57 @@ package projecteuler
   Now some code that can provide the answer more succinctly.
  */
 
-object Problem24 {
-  def getAnswer() : Int =
-    throw new UnsupportedOperationException("Didn't solve yet")
+ /*
+  Simpler example: Find the 10th permutation of the set [A, B, C, D], lexicographically.
 
+  Using letters helps view the set elements as symbols and not numeric values.
+  Arithmetic cannot be done on these symbols (even if those symbols were digits).
+
+  There are 4! = 24 permutations.
+
+  1/4 (3! = 6) start with each symbol.
+  1-6 start with A
+  7-12 start with B
+
+  Of those that start with B, 1/3 (2! = 2) start with each remaining symbol.
+  7-8 start with BA
+  9-10 start with BC
+
+  Of those that start with BC, 1/2 (1! = 1) start with each remaining symbol.
+  9 = BCAD
+  10 - BCDA
+
+  */
+
+object Problem24 {
+  def getAnswer() : String =
+    getNthPermutationOfCharacters(1000000, "0123456789".toSet)
+
+  def factorial(n : Int) : Int =
+    if (n == 0) 1 else n * factorial(n-1)
+
+  def getNthPermutationOfCharacters(n : Int, characters : Set[Char]) : String = {
+    println(n)
+    println(characters)
+
+    val size = characters.size
+    if (size == 1) characters.toList(0).toString()
+    else {
+      val bucketSize = factorial(size - 1)
+      println("bucketSize " + bucketSize)
+
+      val bucketNumber = Math.floor(n / bucketSize).toInt
+      println("bucketNumber " + bucketNumber)
+
+      val char = characters.toList.sorted.apply(bucketNumber)
+      println("char " + char)
+
+      val bucketMin = ((bucketNumber) * bucketSize) +1
+      println("bucketMin " + bucketMin)
+
+      Console.out.flush()
+
+      char + getNthPermutationOfCharacters(Math.max(0, n - bucketMin), characters.filter(_ != char))
+    }
+  }
 }
