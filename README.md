@@ -2,32 +2,18 @@
 
 This repository contains my solutions for the [Project Euler](https://projecteuler.net/) problems.
 
-**!!SPOILER ALERT!!**
+**⚠️ SPOILER ALERT ⚠️**
 
 Don't read my solutions if you actually want to solve these problems yourself.
 
-| #    | Language  |
-| ---: | :-------: |
-| 1 | F# |
-| 2 | F# |
-| 3 | F# |
-| 4 | F# |
-| 5 | F# |
-| 6 | F# |
-| 7 | F# |
-| 8 | F# |
-| 9 | F# |
-| 10 | F# |
-| 11 | F# |
-| 12 | F# |
-| 13 | F# |
-| 14 | F# |
-| 15 | _(Skipped)_ |
-| 16 | Rust |
-| 17 | Rust |
-| 18 | _(Skipped)_ |
-| 19 | Java |
-| 20 | Java |
-| 21 | Scala |
-| 22 | Scala |
-| 23 | Scala |
+Code is organized by language.
+
+| Problems | Language  |
+| :---: | :------- |
+| 1 - 14 | F# |
+| 16 - 17 | Rust |
+| 19 - 20 | Java |
+| 21 - 23 | Scala |
+| 24 | (Open branch) Scala |
+| 25 | C++ |
+| 15, 18 | _(Skipped)_ |
