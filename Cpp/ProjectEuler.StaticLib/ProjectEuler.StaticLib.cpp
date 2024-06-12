@@ -5,6 +5,7 @@
 #include "framework.h"
 #include "InfInt.h"
 #include <stdexcept>
+#include <string>
 
 /* 
 	Problem 25:
@@ -38,6 +39,12 @@ static InfInt fib(int i) {
 	}
 
 	return fib(i - 1) + fib(i - 2);
+}
+
+static int fibLen(int i) {
+	InfInt f = fib(i);
+	std::string s = f.toString();
+	return s.length();
 }
 
 static InfInt solveProblem25()
