@@ -3,6 +3,7 @@
 
 #include "pch.h"
 #include "framework.h"
+#include "InfInt.h"
 
 /* 
 	Problem 25:
@@ -26,9 +27,9 @@
 	What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 */
 
-int solveProblem25()
+static InfInt solveProblem25()
 {
+	InfInt x = 1;
 
-
-	return 3;
+	return x;
 }
