@@ -4,6 +4,7 @@
 #include "pch.h"
 #include "framework.h"
 #include "InfInt.h"
+#include <stdexcept>
 
 /* 
 	Problem 25:
@@ -26,6 +27,18 @@
 
 	What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 */
+
+static InfInt fib(int i) {
+	if (i < 0) {
+		throw std::invalid_argument("Indexes must be positive.");
+	}
+
+	if (i == 1 || i == 2) {
+		return 1;
+	}
+
+	return fib(i - 1) + fib(i - 2);
+}
 
 static InfInt solveProblem25()
 {

@@ -1,12 +1,15 @@
 #include "pch.h"
 #include "../ProjectEuler.StaticLib/ProjectEuler.StaticLib.cpp"
-//#include "../ProjectEuler.StaticLib/BigInt.hpp"
 #include "../ProjectEuler.StaticLib/InfInt.h"
-//
-TEST(ProjectEulerTests, Problem25) {
+
+TEST(Problem25Tests, ItsSolved) {
 	InfInt actual = solveProblem25();
 	InfInt expected = 0;
 	EXPECT_EQ(actual, expected);
 }
 
-
+TEST(Problem25Tests, FibonacciWorks) {
+	InfInt actual = fib(12);
+	InfInt expected = 144;
+	EXPECT_EQ(actual, expected);
+}
