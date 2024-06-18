@@ -6,6 +6,8 @@
 #include "InfInt.h"
 #include <stdexcept>
 #include <string>
+#include <functional>
+#include <map>
 
 /* 
 	Problem 25:
@@ -29,6 +31,9 @@
 	What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
 */
 
+std::map<int, InfInt> fibCache;
+
+static InfInt memoFib(int i);
 static InfInt fib(int i) {
 	if (i < 0) {
 		throw std::invalid_argument("Indexes must be positive.");
@@ -38,18 +43,49 @@ static InfInt fib(int i) {
 		return 1;
 	}
 
-	return fib(i - 1) + fib(i - 2);
+	return memoFib(i - 1) + memoFib(i - 2);
+}
+static InfInt memoFib(int i) {
+	InfInt val = fibCache[i];
+
+	if (val == NULL) {
+		val = fib(i);
+		fibCache.insert_or_assign(i, val);
+	}
+
+	return val;
 }
 
 static int fibLen(int i) {
-	InfInt f = fib(i);
+	InfInt f = memoFib(i);
 	std::string s = f.toString();
 	return s.length();
 }
 
-static InfInt solveProblem25()
-{
-	InfInt x = 1;
+static bool testNum(int i) {
+	int l = fibLen(i);
+	if (l >= 10) {
+		return true;
+	}
+	else {
+		std::cout << "Checked fib(" + std::to_string(i) + "), length is " + std::to_string(l)  + "\n";
+		return false;
+	}
+}
 
-	return x;
+static int solveProblem25()
+{
+	// If not memoized
+	//	10x = <1ms
+	//  20x = 18ms
+	//  30x = 2.3s
+	//  40x = minutes
+
+	for (int i = 1; i < 100; i++) {
+		if (testNum(i)) {
+			return i;
+		}
+	}
+
+	return -1;
 }
