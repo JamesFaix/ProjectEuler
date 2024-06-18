@@ -62,30 +62,21 @@ static int fibLen(int i) {
 	return s.length();
 }
 
-static bool testNum(int i) {
-	int l = fibLen(i);
-	if (l >= 10) {
-		return true;
-	}
-	else {
-		std::cout << "Checked fib(" + std::to_string(i) + "), length is " + std::to_string(l)  + "\n";
-		return false;
-	}
-}
-
 static int solveProblem25()
 {
-	// If not memoized
-	//	10x = <1ms
-	//  20x = 18ms
-	//  30x = 2.3s
-	//  40x = minutes
+	int max = 10000;
+	int len;
 
-	for (int i = 1; i < 100; i++) {
-		if (testNum(i)) {
+	for (int i = 1; i < max; i++) {
+		auto len = fibLen(i);
+		if (len >= 1000) {
 			return i;
 		}
 	}
 
+	std::cout << "Checked " + std::to_string(max) + " fib numbers, but only got to length " + std::to_string(len) + "\n";
+
 	return -1;
 }
+
+// You are the 164422nd person to have solved this problem.

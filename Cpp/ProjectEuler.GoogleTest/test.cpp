@@ -22,6 +22,6 @@ TEST(Problem25Tests, fibLenWorks) {
 
 TEST(Problem25Tests, ItsSolved) {
 	int actual = solveProblem25();
-	int expected = 0;
+	int expected = 4782;
 	EXPECT_EQ(actual, expected);
 }
