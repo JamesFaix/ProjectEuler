@@ -16,4 +16,5 @@ Code is organized by language.
 | 21 - 23 | Scala |
 | 24 | (Open branch) Scala |
 | 25 | C++ |
-| 15, 18 | _(Skipped)_ |
+| 28 | Python |
+| 15, 18, 26, 27 | _(Skipped)_ |
