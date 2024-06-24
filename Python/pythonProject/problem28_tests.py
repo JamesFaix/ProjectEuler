@@ -16,6 +16,18 @@ class Problem28Tests(unittest.TestCase):
 
         self.assertEqual(actual, expected)
 
+    def test_sum_diagonal_numbers_of_spiral_5(self):
+        actual = problem28.sum_diagonal_numbers_of_spiral(5)
+        expected = 101
+
+        self.assertEqual(actual, expected)
+
+    def test_solve(self):
+        actual = problem28.solve()
+        expected = 669171001
+
+        self.assertEqual(actual, expected)
+
 
 if __name__ == '__main__':
     unittest.main()

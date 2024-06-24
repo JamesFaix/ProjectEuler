@@ -55,5 +55,13 @@ def list_diagonal_numbers_of_spiral(diameter: int) -> list:
     return result
 
 
+def sum_diagonal_numbers_of_spiral(diameter: int) -> int:
+    xs = list_diagonal_numbers_of_spiral(diameter)
+    return sum(xs)
+
+
 def solve() -> int:
-    return 0
+    return sum_diagonal_numbers_of_spiral(1001)
+
+
+# You are the 114568th person to have solved this problem.
