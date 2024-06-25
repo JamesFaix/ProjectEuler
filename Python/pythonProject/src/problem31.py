@@ -1,6 +1,5 @@
-import math
 from typing import NewType
-from functools import reduce
+from math import floor
 
 # In the United Kingdom the currency is made up of pound (£) and pence (p).
 # There are eight coins in general circulation:
@@ -12,91 +11,59 @@ from functools import reduce
 # How many different ways can £2 be made using any number of coins?
 
 
-Coin = NewType('Coin', int)
-valid_coin_values = [1, 2, 5, 10, 20, 50, 100, 200]
+def integer_divide(dividend: int, divisor: int):
+    return floor(dividend / divisor)
 
 
-class TreeNode:
-    def __init__(self, value, parent):
-        self.value = value
-        self.parent: TreeNode = parent
-        self.children: list[TreeNode] = []
-
-    def is_root(self):
-        return self.parent is None
-
-    def add_child(self, node):
-        self.children.append(node)
-
-    @staticmethod
-    def root():
-        return TreeNode(None, None)
+Combination = NewType('Combination', tuple[int, int, int, int, int, int, int, int])
 
 
-def get_leaves(self: TreeNode) -> list :
-    if len(self.children) == 0:
-        return [self]
-    else:
-        return reduce(lambda a, b: a+b, map(get_leaves, self.children))
+def get_combination_value(c: Combination) -> int:
+    (p1, p2, p5, p10, p20, p50, p100, p200) = c
+    return ((1 * p1)
+            + (2 * p2)
+            + (5 * p5)
+            + (10 * p10)
+            + (20 * p20)
+            + (50 * p50)
+            + (100 * p100)
+            + (200 * p200))
 
 
-def get_path(self: TreeNode) -> list:
-    if self.parent is None:
-        return []
-    else:
-        return get_path(self.parent) + [self.value]
+def get_all_possible_combinations(total: int):
+    def range_of_coin_optimized(value: int, subtotal: int):
+        return range(0, integer_divide(subtotal, value) + 1)
 
+    def is_correct_value(c: Combination):
+        return get_combination_value(c) == total
 
-def get_sum(self: TreeNode) -> int:
-    path = get_path(self)
-    return sum(path)
+    possible_combinations: list[Combination] = []
 
+    for p200 in range_of_coin_optimized(200, total):
+        p100_remaining = total - (200 * p200)
+        for p100 in range_of_coin_optimized(100, p100_remaining):
+            p50_remaining = p100_remaining - (100 * p100)
+            for p50 in range_of_coin_optimized(50, p50_remaining):
+                p20_remaining = p50_remaining - (50 * p50)
+                for p20 in range_of_coin_optimized(20, p20_remaining):
+                    p10_remaining = p20_remaining - (20 * p20)
+                    for p10 in range_of_coin_optimized(10, p10_remaining):
+                        p5_remaining = p10_remaining - (10 * p10)
+                        for p5 in range_of_coin_optimized(5, p5_remaining):
+                            p2_remaining = p5_remaining - (5 * p5)
+                            for p2 in range_of_coin_optimized(2, p2_remaining):
+                                p1_remaining = p2_remaining - (2 * p2)
+                                for p1 in range_of_coin_optimized(1, p1_remaining):
+                                    c: Combination = (p1, p2, p5, p10, p20, p50, p100, p200)
+                                    if is_correct_value(c):
+                                        possible_combinations.append(c)
 
-def build_tree(total: int) -> TreeNode:
-    def get_coins_that_fit(value: int):
-        return filter(lambda x: x <= value, valid_coin_values)
+    possible_combinations.sort()
 
-    tree = TreeNode.root()
-    nodes_to_check = [tree]
-
-    while len(nodes_to_check) > 0:
-        node = nodes_to_check.pop(0)
-        accumulated = get_sum(node)
-        print(get_path(node))
-
-        coins = get_coins_that_fit(total - accumulated)
-        children = map(lambda x: TreeNode(Coin(x), node), coins)
-
-        for c in children:
-            nodes_to_check.append(c)
-            node.add_child(c)
-
-    return tree
-
-
-def get_all_paths(tree: TreeNode) -> list[list[Coin]]:
-    leaves = get_leaves(tree)
-    paths = list(map(get_path, leaves))
-
-    # Sort elements in each path
-    for p in paths:
-        p.sort()
-
-    # Remove duplicate paths
-    tuples = map(tuple, paths)
-    distinct_paths = set(tuples)
-    paths = list(map(list, distinct_paths))
-
-    # Sort paths
-    paths.sort()
-
-    return paths
-
-
-def find_combinations_for_total(total: int) -> list[list[Coin]]:
-    tree = build_tree(total)
-    return get_all_paths(tree)
+    return possible_combinations
 
 
 def solve() -> int:
-    return len(find_combinations_for_total(7))
+    return len(get_all_possible_combinations(200))
+
+# You are the 91062nd person to have solved this problem.
