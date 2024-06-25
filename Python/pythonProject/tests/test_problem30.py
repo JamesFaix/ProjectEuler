@@ -1,5 +1,5 @@
 import unittest
-import problem30
+from src import problem30
 
 limit = 1000000
 
@@ -39,7 +39,3 @@ class Problem30Tests(unittest.TestCase):
         expected = 443839
 
         self.assertEqual(actual, expected)
-
-
-if __name__ == '__main__':
-    unittest.main()
