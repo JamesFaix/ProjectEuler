@@ -52,7 +52,7 @@ def get_sum(self: TreeNode) -> int:
     return sum(path)
 
 
-def find_combinations_for_total(total: int):
+def find_combinations_for_total(total: int) -> list[list[Coin]]:
     def get_coins_that_fit(value: int):
         return filter(lambda x: x <= value, valid_coin_values)
 
@@ -70,7 +70,20 @@ def find_combinations_for_total(total: int):
             node.add_child(c)
 
     leaves = get_leaves(tree)
-    paths = list(map(lambda n: get_path(n), leaves))
+    paths = list(map(get_path, leaves))
+
+    # Sort elements in each path
+    for p in paths:
+        p.sort()
+
+    # Remove duplicate paths
+    tuples = map(tuple, paths)
+    distinct_paths = set(tuples)
+    paths = list(map(list, distinct_paths))
+
+    # Sort paths
+    paths.sort()
+
     return paths
 
 

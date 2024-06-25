@@ -59,6 +59,7 @@ class Problem31Tests(unittest.TestCase):
     def test_find_combinations_for_total_5(self):
         expected = [
             [Coin(1), Coin(1), Coin(1), Coin(1), Coin(1)],
+            [Coin(1), Coin(1), Coin(1), Coin(2)],
             [Coin(1), Coin(2), Coin(2)],
             [Coin(5)]
         ]
