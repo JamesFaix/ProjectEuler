@@ -62,8 +62,10 @@ def build_tree(total: int) -> TreeNode:
     while len(nodes_to_check) > 0:
         node = nodes_to_check.pop(0)
         accumulated = get_sum(node)
+        print(get_path(node))
+
         coins = get_coins_that_fit(total - accumulated)
-        children = map(lambda c: TreeNode(Coin(c), node), coins)
+        children = map(lambda x: TreeNode(Coin(x), node), coins)
 
         for c in children:
             nodes_to_check.append(c)
@@ -97,4 +99,4 @@ def find_combinations_for_total(total: int) -> list[list[Coin]]:
 
 
 def solve() -> int:
-    return len(find_combinations_for_total(30))
+    return len(find_combinations_for_total(7))
