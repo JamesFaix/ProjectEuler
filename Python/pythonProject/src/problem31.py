@@ -19,8 +19,8 @@ valid_coin_values = [1, 2, 5, 10, 20, 50, 100, 200]
 class TreeNode:
     def __init__(self, value, parent):
         self.value = value
-        self.parent = parent
-        self.children = []
+        self.parent: TreeNode = parent
+        self.children: list[TreeNode] = []
 
     def is_root(self):
         return self.parent is None
@@ -47,16 +47,31 @@ def get_path(self: TreeNode) -> list:
         return get_path(self.parent) + [self.value]
 
 
-def find_combinations_for_sum(sum: int):
+def get_sum(self: TreeNode) -> int:
+    path = get_path(self)
+    return sum(path)
+
+
+def find_combinations_for_total(total: int):
     def get_coins_that_fit(value: int):
         return filter(lambda x: x <= value, valid_coin_values)
 
     tree = TreeNode.root()
+    nodes_to_check = [tree]
 
-    for c in get_coins_that_fit(sum):
-        tree.add_child(TreeNode(Coin(c), tree))
+    while len(nodes_to_check) > 0:
+        node = nodes_to_check.pop(0)
+        accumulated = get_sum(node)
+        coins = get_coins_that_fit(total - accumulated)
+        children = map(lambda c: TreeNode(Coin(c), node), coins)
 
-    return []
+        for c in children:
+            nodes_to_check.append(c)
+            node.add_child(c)
+
+    leaves = get_leaves(tree)
+    paths = list(map(lambda n: get_path(n), leaves))
+    return paths
 
 
 def solve() -> int:
