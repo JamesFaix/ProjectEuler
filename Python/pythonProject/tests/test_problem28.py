@@ -1,5 +1,5 @@
 import unittest
-import problem28
+from src import problem28
 
 
 class Problem28Tests(unittest.TestCase):
@@ -27,7 +27,3 @@ class Problem28Tests(unittest.TestCase):
         expected = 669171001
 
         self.assertEqual(actual, expected)
-
-
-if __name__ == '__main__':
-    unittest.main()
