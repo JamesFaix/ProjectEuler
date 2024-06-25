@@ -97,4 +97,4 @@ def find_combinations_for_total(total: int) -> list[list[Coin]]:
 
 
 def solve() -> int:
-    return 0
+    return len(find_combinations_for_total(30))
