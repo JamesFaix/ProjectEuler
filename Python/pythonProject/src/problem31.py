@@ -1,5 +1,6 @@
 import math
 from typing import NewType
+from functools import reduce
 
 # In the United Kingdom the currency is made up of pound (£) and pence (p).
 # There are eight coins in general circulation:
@@ -12,21 +13,49 @@ from typing import NewType
 
 
 Coin = NewType('Coin', int)
+valid_coin_values = [1, 2, 5, 10, 20, 50, 100, 200]
 
 
-valid_coins = [
-    Coin(1),
-    Coin(2),
-    Coin(5),
-    Coin(10),
-    Coin(20),
-    Coin(50),
-    Coin(100),
-    Coin(200)
-]
+class TreeNode:
+    def __init__(self, value, parent):
+        self.value = value
+        self.parent = parent
+        self.children = []
+
+    def is_root(self):
+        return self.parent is None
+
+    def add_child(self, node):
+        self.children.append(node)
+
+    @staticmethod
+    def root():
+        return TreeNode(None, None)
+
+
+def get_leaves(self: TreeNode) -> list :
+    if len(self.children) == 0:
+        return [self]
+    else:
+        return reduce(lambda a, b: a+b, map(get_leaves, self.children))
+
+
+def get_path(self: TreeNode) -> list:
+    if self.parent is None:
+        return []
+    else:
+        return get_path(self.parent) + [self.value]
 
 
 def find_combinations_for_sum(sum: int):
+    def get_coins_that_fit(value: int):
+        return filter(lambda x: x <= value, valid_coin_values)
+
+    tree = TreeNode.root()
+
+    for c in get_coins_that_fit(sum):
+        tree.add_child(TreeNode(Coin(c), tree))
+
     return []
 
 

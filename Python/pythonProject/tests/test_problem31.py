@@ -1,8 +1,44 @@
 import unittest
-from src.problem31 import find_combinations_for_sum, solve, Coin
+from src.problem31 import *
 
 
 class Problem31Tests(unittest.TestCase):
+
+    def test_get_leaves(self):
+        tree = TreeNode.root()
+        c1 = TreeNode(Coin(100), tree)
+        tree.add_child(c1)
+        c2 = TreeNode(Coin(50), tree)
+        tree.add_child(c2)
+        c3 = TreeNode(Coin(50), c1)
+        c1.add_child(c3)
+        c4 = TreeNode(Coin(20), c1)
+        c1.add_child(c4)
+
+        actual = get_leaves(tree)
+        expected = [
+            c3, c4, c2
+        ]
+
+        self.assertEqual(actual, expected)
+
+    def test_get_path(self):
+        tree = TreeNode.root()
+        c1 = TreeNode(Coin(100), tree)
+        tree.add_child(c1)
+        c2 = TreeNode(Coin(50), tree)
+        tree.add_child(c2)
+        c3 = TreeNode(Coin(50), c1)
+        c1.add_child(c3)
+        c4 = TreeNode(Coin(20), c1)
+        c1.add_child(c4)
+
+        actual = get_path(c4)
+        expected = [
+            c1.value, c4.value
+        ]
+
+        self.assertEqual(actual, expected)
 
     def test_find_combinations_for_sum_5(self):
         expected = [
